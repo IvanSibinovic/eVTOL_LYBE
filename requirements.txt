@@ -1,0 +1,3 @@
+# Учитавање користи стандардну Python библиотеку.
+# На Windows-у је овај пакет потребан за ZoneInfo('Europe/Belgrade').
+tzdata; sys_platform == "win32"
