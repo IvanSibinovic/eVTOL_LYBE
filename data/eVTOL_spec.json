@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.1",
+  "aircraft_id": "archer_midnight",
+  "manufacturer": "Archer Aviation",
+  "model": "Midnight",
+  "specification_status": "simulation_model_draft",
+  "capacity": {
+    "passenger_seats": 4,
+    "minimum_flight_crew": 1,
+    "cabin_crew_in_model": 0
+  },
+  "performance": {
+    "manufacturer_target_max_speed_kmh": 241.4,
+    "operational_cruise_speed_kmh": 200
+  },
+  "battery": {
+    "modeled_usable_capacity_kwh": 142,
+    "soc_min": 0,
+    "soc_max": 1
+  },
+  "flight_energy_model": {
+    "model": "phase_based",
+    "power_basis": "battery_energy_draw",
+    "power_kw": {
+      "hover": 1149.9,
+      "transition": 917.3,
+      "cruise": 215
+    },
+    "takeoff_segments": [
+      {
+        "phase": "hover",
+        "duration_s": 10,
+        "power_start_key": "hover",
+        "power_end_key": "hover"
+      },
+      {
+        "phase": "acceleration_and_climb",
+        "duration_s": 20,
+        "power_start_key": "transition",
+        "power_end_key": "transition"
+      },
+      {
+        "phase": "transition_to_cruise",
+        "duration_s": 10,
+        "power_start_key": "transition",
+        "power_end_key": "cruise"
+      }
+    ],
+    "landing_segments": [
+      {
+        "phase": "final_approach",
+        "duration_s": 40,
+        "power_start_key": "cruise",
+        "power_end_key": "cruise"
+      },
+      {
+        "phase": "deceleration",
+        "duration_s": 15,
+        "power_start_key": "transition",
+        "power_end_key": "transition"
+      },
+      {
+        "phase": "hover",
+        "duration_s": 5,
+        "power_start_key": "hover",
+        "power_end_key": "hover"
+      }
+    ],
+    "segment_power_interpolation": "linear_in_time",
+    "cruise_duration_basis": "cruise_distance_divided_by_operational_cruise_speed"
+  },
+  "notes": {
+    "capacity": "Четири путничка места су одвојена од једног пилотског места. Број кабинског особља је претпоставка модела.",
+    "max_speed": "241,4 km/h је приближна конверзија пројектованих 150 mph; није брзина коју симулација користи за крстарење, нити је овде наведена као сертификовано ограничење.",
+    "operational_cruise": "Претходни завршни договор: брзина 200 km/h и снага 215 kW. Број 215 односи се на снагу.",
+    "battery_capacity": "142 kWh је усвојени расположиви капацитет у симулацији; не представља овде потврђени сертификовани употребљиви капацитет произвођача.",
+    "soc": "SOC се задаје уделом од 0 до 1. Границе 0 и 1 су границе математичког стања батерије; оперативна резерва и циљ пуњења задају се у config.json.",
+    "charging_curve": "Математички модел и параметри пуњења налазе се у config.json, у одељку charging. У спецификацији летелице остају расположиви капацитет и границе SOC.",
+    "charger": "Инфраструктурна снага пуњача чита се из vertiport_network.json; правила ограничења нето снаге налазе се у config.json.",
+    "energy": "Снаге и трајања фаза су усвојене апроксимације модела. Ако су почетни и крајњи кључ снаге различити, снага се мења линеарно током сегмента.",
+    "cruise_distance": "Трајање крстарења се рачуна из cruise_distance_km у vertiport_network.json, где су већ издвојени крајњи сегменти по 0.5 km. Одузимање се не понавља у моделу енергије.",
+    "operational_rules": "Резерва, додатак на планирану потрошњу, почетни SOC, циљ пуњења, укрцавање/искрцавање и прикључивање/искључивање пуњача припадају config.json.",
+    "provenance": "Нумеричке моделске вредности пренете су из претходног договора о симулацији. Линк произвођача је референца за опис летелице, не потврда моделских снага, криве пуњења или употребљивог капацитета."
+  },
+  "references": [
+    {
+      "title": "Archer Midnight",
+      "url": "https://archer.com/midnight"
+    }
+  ]
+}

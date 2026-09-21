@@ -1,0 +1,802 @@
+{
+  "schema_version": "1.1",
+  "network_id": "eVTOLs_LYBE",
+  "status": "working_model",
+  "coordinate_reference_system": "WGS84",
+  "geometry_coordinate_order": [
+    "longitude_deg",
+    "latitude_deg"
+  ],
+  "distance_unit": "km",
+  "altitude_unit": "m_AMSL",
+  "vertiports": [
+    {
+      "id": "LYBE",
+      "name": "Аеродром Никола Тесла",
+      "role": "airport",
+      "description": "Претпостављена локација аеродромског вертипорта; главни чвор airport-shuttle мреже.",
+      "latitude_deg": 44.817025,
+      "longitude_deg": 20.295685,
+      "elevation_m_amsl": 96.0,
+      "movement_area": {
+        "tlof_count": 1,
+        "fato_count": 1,
+        "shared_resource": true,
+        "max_simultaneous_movements": 1
+      },
+      "parking_stands": 6,
+      "charging": {
+        "charger_count": 6,
+        "power_per_charger_kw": 320.0,
+        "chargers_per_stand": 1,
+        "max_simultaneous_charging_aircraft": 6
+      }
+    },
+    {
+      "id": "EXPO",
+      "name": "EXPO",
+      "role": "city",
+      "description": "Претпостављени вертипорт за подручје комплекса EXPO.",
+      "latitude_deg": 44.76052,
+      "longitude_deg": 20.296044,
+      "elevation_m_amsl": 73.0,
+      "movement_area": {
+        "tlof_count": 1,
+        "fato_count": 1,
+        "shared_resource": true,
+        "max_simultaneous_movements": 1
+      },
+      "parking_stands": 2,
+      "charging": {
+        "charger_count": 2,
+        "power_per_charger_kw": 320.0,
+        "chargers_per_stand": 1,
+        "max_simultaneous_charging_aircraft": 2
+      }
+    },
+    {
+      "id": "BW",
+      "name": "BW Marina",
+      "role": "city",
+      "description": "Претпостављени вертипорт на савском приобаљу, за подручје Београда на води.",
+      "latitude_deg": 44.797703,
+      "longitude_deg": 20.433264,
+      "elevation_m_amsl": 68.0,
+      "movement_area": {
+        "tlof_count": 1,
+        "fato_count": 1,
+        "shared_resource": true,
+        "max_simultaneous_movements": 1
+      },
+      "parking_stands": 4,
+      "charging": {
+        "charger_count": 4,
+        "power_per_charger_kw": 320.0,
+        "chargers_per_stand": 1,
+        "max_simultaneous_charging_aircraft": 4
+      }
+    },
+    {
+      "id": "JUG",
+      "name": "Hotel Jugoslavija",
+      "role": "city",
+      "description": "Претпостављена локација на дунавском приобаљу код хотела Југославија.",
+      "latitude_deg": 44.829263,
+      "longitude_deg": 20.423577,
+      "elevation_m_amsl": 68.0,
+      "movement_area": {
+        "tlof_count": 1,
+        "fato_count": 1,
+        "shared_resource": true,
+        "max_simultaneous_movements": 1
+      },
+      "parking_stands": 2,
+      "charging": {
+        "charger_count": 2,
+        "power_per_charger_kw": 320.0,
+        "chargers_per_stand": 1,
+        "max_simultaneous_charging_aircraft": 2
+      }
+    },
+    {
+      "id": "DOR",
+      "name": "Marina Dorćol",
+      "role": "city",
+      "description": "Претпостављена локација на дунавском приобаљу код марине Дорћол.",
+      "latitude_deg": 44.830894,
+      "longitude_deg": 20.464705,
+      "elevation_m_amsl": 68.0,
+      "movement_area": {
+        "tlof_count": 1,
+        "fato_count": 1,
+        "shared_resource": true,
+        "max_simultaneous_movements": 1
+      },
+      "parking_stands": 2,
+      "charging": {
+        "charger_count": 2,
+        "power_per_charger_kw": 320.0,
+        "chargers_per_stand": 1,
+        "max_simultaneous_charging_aircraft": 2
+      }
+    },
+    {
+      "id": "LYBV",
+      "name": "Бањички вис",
+      "role": "city",
+      "description": "Локација Бањички вис, означена као LYBV у нашем моделу.",
+      "latitude_deg": 44.762117,
+      "longitude_deg": 20.470847,
+      "elevation_m_amsl": 177.0,
+      "movement_area": {
+        "tlof_count": 1,
+        "fato_count": 1,
+        "shared_resource": true,
+        "max_simultaneous_movements": 1
+      },
+      "parking_stands": 2,
+      "charging": {
+        "charger_count": 2,
+        "power_per_charger_kw": 320.0,
+        "chargers_per_stand": 1,
+        "max_simultaneous_charging_aircraft": 2
+      }
+    }
+  ],
+  "transit_nodes": [
+    {
+      "id": "J_EXPO",
+      "name": "Рачвање EXPO / град",
+      "description": "Рачвање трасе од LYBE ка EXPO и ка савском коридору.",
+      "latitude_deg": 44.78728789088127,
+      "longitude_deg": 20.30861477198751,
+      "elevation_m_amsl": 69.0
+    },
+    {
+      "id": "J_BW",
+      "name": "Рачвање код BW Marina",
+      "description": "Прикључак BW Marina и рачвање ка Бањичком вису и северном делу мреже.",
+      "latitude_deg": 44.797703,
+      "longitude_deg": 20.433264,
+      "elevation_m_amsl": 68.0
+    },
+    {
+      "id": "J_NORTH",
+      "name": "Рачвање Југославија / Дорћол",
+      "description": "Северно рачвање трасе ка Hotel Jugoslavija и Marina Dorćol.",
+      "latitude_deg": 44.82484306164456,
+      "longitude_deg": 20.44320941501806,
+      "elevation_m_amsl": 68.0
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01",
+      "from_node": "LYBE",
+      "to_node": "J_EXPO",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.295685,
+          44.817025
+        ],
+        [
+          20.30861477198751,
+          44.78728789088127
+        ]
+      ],
+      "length_km": 3.460405
+    },
+    {
+      "id": "E02",
+      "from_node": "J_EXPO",
+      "to_node": "EXPO",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.30861477198751,
+          44.78728789088127
+        ],
+        [
+          20.296044,
+          44.76052
+        ]
+      ],
+      "length_km": 3.137506
+    },
+    {
+      "id": "E03",
+      "from_node": "J_EXPO",
+      "to_node": "J_BW",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.30861477198751,
+          44.78728789088127
+        ],
+        [
+          20.37526938456304,
+          44.78749276272577
+        ],
+        [
+          20.39864595220536,
+          44.79447552217812
+        ],
+        [
+          20.41136577043692,
+          44.79660138711944
+        ],
+        [
+          20.42336560740613,
+          44.79659326254718
+        ],
+        [
+          20.433264,
+          44.797703
+        ]
+      ],
+      "length_km": 10.030474
+    },
+    {
+      "id": "E04",
+      "from_node": "J_BW",
+      "to_node": "BW",
+      "bidirectional": true,
+      "type": "terminal_connector",
+      "geometry_lon_lat": [
+        [
+          20.433264,
+          44.797703
+        ],
+        [
+          20.433264,
+          44.797703
+        ]
+      ],
+      "length_km": 0.0
+    },
+    {
+      "id": "E05",
+      "from_node": "J_BW",
+      "to_node": "LYBV",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.433264,
+          44.797703
+        ],
+        [
+          20.42713871939218,
+          44.79122200484189
+        ],
+        [
+          20.4290183738491,
+          44.77617732229247
+        ],
+        [
+          20.470847,
+          44.762117
+        ]
+      ],
+      "length_km": 6.200687
+    },
+    {
+      "id": "E06",
+      "from_node": "J_BW",
+      "to_node": "J_NORTH",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.433264,
+          44.797703
+        ],
+        [
+          20.44062822213235,
+          44.80183229816556
+        ],
+        [
+          20.44669472174015,
+          44.80794500288398
+        ],
+        [
+          20.44842441282555,
+          44.81402546498708
+        ],
+        [
+          20.44758075453207,
+          44.81755648664086
+        ],
+        [
+          20.44320941501806,
+          44.82484306164456
+        ]
+      ],
+      "length_km": 3.540386
+    },
+    {
+      "id": "E07",
+      "from_node": "J_NORTH",
+      "to_node": "JUG",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.44320941501806,
+          44.82484306164456
+        ],
+        [
+          20.423577,
+          44.829263
+        ]
+      ],
+      "length_km": 1.624419
+    },
+    {
+      "id": "E08",
+      "from_node": "J_NORTH",
+      "to_node": "DOR",
+      "bidirectional": true,
+      "type": "flight_corridor",
+      "geometry_lon_lat": [
+        [
+          20.44320941501806,
+          44.82484306164456
+        ],
+        [
+          20.44478863631923,
+          44.82878705870553
+        ],
+        [
+          20.45209515435579,
+          44.83255694629119
+        ],
+        [
+          20.464705,
+          44.830894
+        ]
+      ],
+      "length_km": 2.179858
+    }
+  ],
+  "notes": {
+    "scope": "Радна симулациона мрежа претпостављених вертипортова и усвојених траса; није оперативно одобрена мрежа.",
+    "identifiers": "LYBE, EXPO, BW, JUG, DOR и LYBV су идентификатори у моделу. Овај фајл не потврђује статус ICAO ознака.",
+    "geometry_source": "Геометрија реконструисана из координата претходно налепљеног KML-а, враћених из разговора 10.09.2026. Координате терминала задржане на шест децимала.",
+    "merged_nodes": "Блиске поновљене KML тачке рачвања спојене су у један чвор. За EXPO и северно рачвање задржана је прва наведена координата; за BW користи се усвојена координата вертипорта.",
+    "transit_nodes": "Називи J_EXPO, J_BW и J_NORTH су нове програмске ознаке постојећих рачвања. Транзитни чворови немају слетање, укрцавање или пуњење.",
+    "bw_connector": "BW и J_BW имају исте координате. Веза дужине нула је логички прикључак терминала на трасу, а не посебан лет. Пролазак кроз J_BW не заузима TLOF/FATO или паркинг BW.",
+    "elevation": "Приближне висине површине очитане на усвојеним координатама из Copernicus DEM GLO-90 преко Open-Meteo. Просторна резолуција је 90 m; подаци не представљају геодетски измерене коте TLOF/FATO или будућих платформи. На приобаљу вредност може одговарати воденој површини у моделу. За транзитне чворове висина означава површину испод чвора, а не висину лета. Надморска висина тренутно не утиче на прорачун растојања, времена или енергије.",
+    "movement_capacity": "Један заједнички TLOF/FATO ресурс по вертипорту, са једним истовременим полетањем или слетањем. TLOF и FATO се не сабирају као два независна ресурса.",
+    "charging": "На свакој паркинг позицији постоји један пуњач од 320 kW. За основни модел сви пуњачи могу истовремено користити називну снагу; није задато додатно заједничко ограничење прикључка.",
+    "charging_function": "Математичка крива, ефикасност и правила пуњења припадају config.json; овај фајл садржи инфраструктуру.",
+    "routes": "Свака рута је двосмерна; обрнути смер користи обрнут редослед чворова и деоница. Путнички летови повезују LYBE са градским вертипортовима без међуслетања. Градске међусобне руте служе за позиционе летове.",
+    "derived_values": "Дужине деоница и рута су израчунате из геометрије; cruise_distance_km се изводи из укупне дужине и правила на крају фајла. После измене геометрије или правила треба их поново израчунати.",
+    "flight_model": "Времена и енергије се рачунају користећи фазе из eVTOL_spec.json и cruise_distance_km. Не додаје се још време 1 km крстарења за крајње фазе.",
+    "terminal_distance_assumption": "По 0.5 km на оба краја је искуствена апроксимација аутора на основу летења хеликоптером. То је просторна подела модела, а не валидирани кинематички профил Midnight-а.",
+    "initial_fleet_allocation": "Кључеви 1–8 означавају укупан број летелица, а вредности број летелица на појединим вертипортовима на почетку сваког понављања симулације. Вертипорт који није наведен има нула летелица. Ово је почетни просторни распоред, а не динамичко правило распоређивања. Величина флоте бира се у config.json. За неподржану величину флоте учитавање треба да пријави грешку, без аутоматског претпостављања распореда."
+  },
+  "distance_model": {
+    "route_length_method": "sum_of_haversine_distances_along_edge_polylines",
+    "earth_mean_radius_km": 6371.0088,
+    "vertical_distance_included": false,
+    "departure_segment_km": 0.5,
+    "arrival_segment_km": 0.5,
+    "cruise_distance_rule": "total_distance_km - departure_segment_km - arrival_segment_km",
+    "apply_terminal_deductions": "once_per_complete_flight_at_origin_and_destination_only",
+    "invalid_short_route_policy": "reject_when_total_distance_km_is_less_than_sum_of_terminal_segments",
+    "stored_length_precision_decimals": 6
+  },
+  "routes": [
+    {
+      "id": "LYBE_EXPO",
+      "origin": "LYBE",
+      "destination": "EXPO",
+      "bidirectional": true,
+      "allowed_operations": [
+        "passenger",
+        "repositioning"
+      ],
+      "node_path": [
+        "LYBE",
+        "J_EXPO",
+        "EXPO"
+      ],
+      "edge_path": [
+        "E01",
+        "E02"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 6.597911,
+      "cruise_distance_km": 5.597911,
+      "previous_rounded_reference_distance_km": 6.6
+    },
+    {
+      "id": "LYBE_BW",
+      "origin": "LYBE",
+      "destination": "BW",
+      "bidirectional": true,
+      "allowed_operations": [
+        "passenger",
+        "repositioning"
+      ],
+      "node_path": [
+        "LYBE",
+        "J_EXPO",
+        "J_BW",
+        "BW"
+      ],
+      "edge_path": [
+        "E01",
+        "E03",
+        "E04"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 13.490879,
+      "cruise_distance_km": 12.490879,
+      "previous_rounded_reference_distance_km": 13.5
+    },
+    {
+      "id": "LYBE_JUG",
+      "origin": "LYBE",
+      "destination": "JUG",
+      "bidirectional": true,
+      "allowed_operations": [
+        "passenger",
+        "repositioning"
+      ],
+      "node_path": [
+        "LYBE",
+        "J_EXPO",
+        "J_BW",
+        "J_NORTH",
+        "JUG"
+      ],
+      "edge_path": [
+        "E01",
+        "E03",
+        "E06",
+        "E07"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 18.655684,
+      "cruise_distance_km": 17.655684,
+      "previous_rounded_reference_distance_km": 18.7
+    },
+    {
+      "id": "LYBE_DOR",
+      "origin": "LYBE",
+      "destination": "DOR",
+      "bidirectional": true,
+      "allowed_operations": [
+        "passenger",
+        "repositioning"
+      ],
+      "node_path": [
+        "LYBE",
+        "J_EXPO",
+        "J_BW",
+        "J_NORTH",
+        "DOR"
+      ],
+      "edge_path": [
+        "E01",
+        "E03",
+        "E06",
+        "E08"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 19.211123,
+      "cruise_distance_km": 18.211123,
+      "previous_rounded_reference_distance_km": 19.2
+    },
+    {
+      "id": "LYBE_LYBV",
+      "origin": "LYBE",
+      "destination": "LYBV",
+      "bidirectional": true,
+      "allowed_operations": [
+        "passenger",
+        "repositioning"
+      ],
+      "node_path": [
+        "LYBE",
+        "J_EXPO",
+        "J_BW",
+        "LYBV"
+      ],
+      "edge_path": [
+        "E01",
+        "E03",
+        "E05"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 19.691566,
+      "cruise_distance_km": 18.691566,
+      "previous_rounded_reference_distance_km": 19.7
+    },
+    {
+      "id": "EXPO_BW",
+      "origin": "EXPO",
+      "destination": "BW",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "EXPO",
+        "J_EXPO",
+        "J_BW",
+        "BW"
+      ],
+      "edge_path": [
+        "E02",
+        "E03",
+        "E04"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 13.16798,
+      "cruise_distance_km": 12.16798
+    },
+    {
+      "id": "EXPO_JUG",
+      "origin": "EXPO",
+      "destination": "JUG",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "EXPO",
+        "J_EXPO",
+        "J_BW",
+        "J_NORTH",
+        "JUG"
+      ],
+      "edge_path": [
+        "E02",
+        "E03",
+        "E06",
+        "E07"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 18.332785,
+      "cruise_distance_km": 17.332785
+    },
+    {
+      "id": "EXPO_DOR",
+      "origin": "EXPO",
+      "destination": "DOR",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "EXPO",
+        "J_EXPO",
+        "J_BW",
+        "J_NORTH",
+        "DOR"
+      ],
+      "edge_path": [
+        "E02",
+        "E03",
+        "E06",
+        "E08"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 18.888224,
+      "cruise_distance_km": 17.888224
+    },
+    {
+      "id": "EXPO_LYBV",
+      "origin": "EXPO",
+      "destination": "LYBV",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "EXPO",
+        "J_EXPO",
+        "J_BW",
+        "LYBV"
+      ],
+      "edge_path": [
+        "E02",
+        "E03",
+        "E05"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 19.368667,
+      "cruise_distance_km": 18.368667
+    },
+    {
+      "id": "BW_JUG",
+      "origin": "BW",
+      "destination": "JUG",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "BW",
+        "J_BW",
+        "J_NORTH",
+        "JUG"
+      ],
+      "edge_path": [
+        "E04",
+        "E06",
+        "E07"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 5.164805,
+      "cruise_distance_km": 4.164805
+    },
+    {
+      "id": "BW_DOR",
+      "origin": "BW",
+      "destination": "DOR",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "BW",
+        "J_BW",
+        "J_NORTH",
+        "DOR"
+      ],
+      "edge_path": [
+        "E04",
+        "E06",
+        "E08"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 5.720244,
+      "cruise_distance_km": 4.720244
+    },
+    {
+      "id": "BW_LYBV",
+      "origin": "BW",
+      "destination": "LYBV",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "BW",
+        "J_BW",
+        "LYBV"
+      ],
+      "edge_path": [
+        "E04",
+        "E05"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 6.200687,
+      "cruise_distance_km": 5.200687
+    },
+    {
+      "id": "JUG_DOR",
+      "origin": "JUG",
+      "destination": "DOR",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "JUG",
+        "J_NORTH",
+        "DOR"
+      ],
+      "edge_path": [
+        "E07",
+        "E08"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 3.804277,
+      "cruise_distance_km": 2.804277
+    },
+    {
+      "id": "JUG_LYBV",
+      "origin": "JUG",
+      "destination": "LYBV",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "JUG",
+        "J_NORTH",
+        "J_BW",
+        "LYBV"
+      ],
+      "edge_path": [
+        "E07",
+        "E06",
+        "E05"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 11.365492,
+      "cruise_distance_km": 10.365492
+    },
+    {
+      "id": "DOR_LYBV",
+      "origin": "DOR",
+      "destination": "LYBV",
+      "bidirectional": true,
+      "allowed_operations": [
+        "repositioning"
+      ],
+      "node_path": [
+        "DOR",
+        "J_NORTH",
+        "J_BW",
+        "LYBV"
+      ],
+      "edge_path": [
+        "E08",
+        "E06",
+        "E05"
+      ],
+      "intermediate_landings": [],
+      "total_distance_km": 11.920931,
+      "cruise_distance_km": 10.920931
+    }
+  ],
+  "elevation_source": {
+    "provider": "Open-Meteo Elevation API",
+    "dataset": "Copernicus DEM 2021 release GLO-90",
+    "horizontal_resolution_m": 90,
+    "retrieved_on": "2026-09-20",
+    "documentation_url": "https://open-meteo.com/en/docs/elevation-api",
+    "dataset_doi": "https://doi.org/10.5270/ESA-c5d3d65",
+    "query_url": "https://api.open-meteo.com/v1/elevation?latitude=44.817025%2C44.76052%2C44.797703%2C44.829263%2C44.830894%2C44.762117%2C44.78728789088127%2C44.797703%2C44.82484306164456&longitude=20.295685%2C20.296044%2C20.433264%2C20.423577%2C20.464705%2C20.470847%2C20.30861477198751%2C20.433264%2C20.44320941501806",
+    "interpretation": "Approximate surface elevation at the specified coordinates; not a surveyed TLOF/FATO platform elevation or a flight altitude.",
+    "attribution": "Copernicus Programme / ESA; elevation data retrieved through Open-Meteo."
+  },
+  "initial_fleet_allocation": {
+    "1": {
+      "LYBE": 1
+    },
+    "2": {
+      "LYBE": 2
+    },
+    "3": {
+      "LYBE": 2,
+      "BW": 1
+    },
+    "4": {
+      "LYBE": 3,
+      "BW": 1
+    },
+    "5": {
+      "LYBE": 3,
+      "BW": 2
+    },
+    "6": {
+      "LYBE": 3,
+      "BW": 2,
+      "JUG": 1
+    },
+    "7": {
+      "LYBE": 3,
+      "BW": 2,
+      "JUG": 1,
+      "DOR": 1
+    },
+    "8": {
+      "LYBE": 3,
+      "BW": 2,
+      "JUG": 1,
+      "DOR": 1,
+      "LYBV": 1
+    }
+  }
+}
