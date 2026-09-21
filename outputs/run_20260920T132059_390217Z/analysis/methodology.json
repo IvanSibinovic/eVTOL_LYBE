@@ -1,0 +1,12 @@
+{
+  "confidence": 0.95,
+  "independent_unit": "replication",
+  "interval": "two_sided_student_t",
+  "service_fraction": "arithmetic_mean_of_replication_fractions",
+  "single_replication_confidence_interval": null,
+  "service_target": null,
+  "failed_replications": "reported_separately_and_excluded_from_completed_run_means",
+  "cause_minutes": "overlap_possible; sum combination minutes instead",
+  "attribution": "observed_constraints_not_counterfactual_causal_effects",
+  "cohort_time": "request_datetime_with_local_date_and_offset"
+}

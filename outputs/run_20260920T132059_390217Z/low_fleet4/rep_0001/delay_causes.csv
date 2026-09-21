@@ -1,0 +1,16 @@
+﻿stage,scope,causes,label,exposed_passengers,late_passengers_exposed,late_passengers_blocked_after_limit,fraction_of_late_passengers_exposed,observed_passenger_minutes,overdue_passenger_minutes,extra_after_boarding_passenger_minutes
+after_boarding,committed_flight,battery_after_repositioning,Батерија после позиционог лета,52,36,0,0.5538461538461539,155.96100764122113,0.0,155.96100764122113
+after_boarding,committed_flight,battery_at_origin,Батерија летелице на полазишту,6,5,0,0.07692307692307693,7.070923728720299,0.0,7.070923728720299
+after_boarding,committed_flight,destination_tlof,Одредишни TLOF/FATO,4,0,0,0.0,3.3709713041105713,0.0,3.3709713041105713
+after_boarding,committed_flight,origin_tlof,Полазни TLOF/FATO,19,3,0,0.046153846153846156,24.464103523461567,0.0,24.464103523461567
+before_boarding,candidate_set,group_formation,Правило формирања групе,15,15,0,0.23076923076923078,109.55234611700617,0.0,0.0
+before_boarding,candidate_set,priority_other_group,Преддодела другој групи по редоследу диспечера,18,18,8,0.27692307692307694,189.89118501891883,73.16851479066473,0.0
+before_boarding,selected_plan,aircraft_busy,Летелица завршава претходни задатак,111,60,22,0.9230769230769231,1153.0225692070373,348.65137975305754,0.0
+before_boarding,selected_plan,battery_before_repositioning,Батерија пре позиционог лета,42,30,18,0.46153846153846156,173.43720744934961,54.22167976393831,0.0
+before_boarding,selected_plan,cleaning,Чишћење,24,15,11,0.23076923076923078,199.09803258574786,81.95879275908518,0.0
+before_boarding,selected_plan,departure_preparation,Обавезна завршна припрема,125,55,28,0.8461538461538461,124.00528077707999,26.259731207721536,0.0
+before_boarding,selected_plan,destination_tlof,Одредишни TLOF/FATO,16,8,4,0.12307692307692308,12.915893154691368,2.721923251665309,0.0
+before_boarding,selected_plan,group_formation,Правило формирања групе,216,58,0,0.8923076923076924,2545.15330183341,0.0,0.0
+before_boarding,selected_plan,origin_tlof,Полазни TLOF/FATO,13,4,1,0.06153846153846154,10.114368416496443,0.20605135455237664,0.0
+before_boarding,selected_plan,repositioning_flight,Долазак летелице позиционим летом,139,55,53,0.8461538461538461,758.294604477657,221.48584981092205,0.0
+departure_preparation,committed_flight,departure_preparation,Обавезна завршна припрема,239,65,0,1.0,238.99999999999977,0.0,0.0

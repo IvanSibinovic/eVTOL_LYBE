@@ -1,0 +1,414 @@
+{
+  "schema_version": "1.0",
+  "project_id": "eVTOLs_LYBE",
+  "configuration_status": "working_proposal",
+  "paths": {
+    "aircraft_spec": "data/eVTOL_spec.json",
+    "vertiport_network": "data/vertiport_network.json",
+    "flight_schedule": "data/lybe_peak_day_2026-07-31_updated.json",
+    "output_directory": "outputs",
+    "relative_paths_base": "config_file_directory"
+  },
+  "run": {
+    "mode": "single_configuration",
+    "fleet_size": 4,
+    "demand_scenario": "low",
+    "replications": 2,
+    "base_seed": 20260920
+  },
+  "experiment": {
+    "fleet_sizes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "demand_scenarios": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "replications_source": "run.replications",
+    "evaluate_all_configurations": true,
+    "selection_rule": "smallest_tested_fleet_meeting_service_target_for_each_demand_scenario",
+    "no_qualifying_fleet_result": "target_not_met_within_tested_range"
+  },
+  "simulation": {
+    "engine": "discrete_event",
+    "internal_time_unit": "seconds",
+    "timezone": "Europe/Belgrade",
+    "flight_date_source": "flight_schedule.date",
+    "start_rule": "earliest_generated_passenger_request",
+    "end_rule": "all_generated_passenger_journeys_completed",
+    "airport_to_city_journey_end": "disembarking_end_at_city_vertiport",
+    "city_to_airport_journey_end": "arrival_at_airport_terminal",
+    "carry_over_passengers": false,
+    "warm_up_period_min": 0,
+    "initial_activities_in_progress": false,
+    "passenger_abandonment": false,
+    "no_passengers_rule": "finish_replication_with_undefined_service_fraction",
+    "deadlock_rule": "stop_and_report_infeasible_replication_without_dropping_passengers",
+    "simultaneous_event_order": [
+      "activity_completions_and_resource_releases",
+      "passenger_requests",
+      "group_deadlines",
+      "dispatch"
+    ],
+    "time_comparison_tolerance_s": 1e-06
+  },
+  "fleet": {
+    "aircraft_id": "archer_midnight",
+    "initial_allocation_source": "vertiport_network.initial_fleet_allocation",
+    "initial_soc": 1,
+    "initial_completed_legs_since_cleaning": 0
+  },
+  "randomness": {
+    "generator": "numpy_PCG64",
+    "seed_strategy": "SeedSequence",
+    "independent_replications": true,
+    "reuse_same_generated_demand_across_fleet_sizes": true,
+    "seed_components": [
+      "base_seed",
+      "replication_index",
+      "scenario_id",
+      "stream_id"
+    ],
+    "scenario_ids": {
+      "low": 1,
+      "medium": 2,
+      "high": 3
+    },
+    "stream_ids": {
+      "passenger_counts": 1,
+      "city_assignment": 2,
+      "arrival_terminal_processing": 3,
+      "terminal_access": 4,
+      "departure_terminal_earliness": 5
+    },
+    "flight_iteration_order": "sorted_by_flight_id",
+    "fleet_size_in_seed": false
+  },
+  "demand": {
+    "schedule_records_key": "flights",
+    "schedule_type": "synthetic_scenario",
+    "scheduled_time_interpretation": {
+      "arrival": "on_block_at_aircraft_stand",
+      "departure": "off_block_from_aircraft_stand"
+    },
+    "flight_delays_enabled": false,
+    "passenger_generation": {
+      "distribution": "binomial",
+      "trials_field": "seat_capacity",
+      "success_probability_rule": "load_factor * (1 - transfer_share) * selected_adoption_share",
+      "round_expected_passenger_counts": false
+    },
+    "calibration": {
+      "target_passenger_movements": 40584,
+      "load_factor_rule": "target_passenger_movements / sum_seat_capacity",
+      "transfer_share_target": 0.4,
+      "regional_airports": [
+        "TGD",
+        "TIV",
+        "SKP",
+        "TIA",
+        "SJJ",
+        "SOF"
+      ],
+      "regional_transfer_share": 0.6,
+      "other_transfer_share_rule": "(transfer_share_target * total_seats - regional_transfer_share * regional_seats) / other_seats",
+      "recompute_from_schedule": true,
+      "invalid_probability_policy": "raise_error"
+    },
+    "adoption_share": {
+      "low": 0.01,
+      "medium": 0.03,
+      "high": 0.05
+    },
+    "adoption_population": "non_transfer_passenger_movements",
+    "city_assignment": {
+      "distribution": "categorical_per_passenger",
+      "shares": {
+        "EXPO": 0.05,
+        "BW": 0.35,
+        "JUG": 0.2,
+        "DOR": 0.2,
+        "LYBV": 0.2
+      },
+      "same_shares_in_both_directions": true
+    },
+    "airport_to_city": {
+      "terminal_processing_min": {
+        "distribution": "triangular",
+        "minimum": 15,
+        "mode": 25,
+        "maximum": 50
+      },
+      "request_time_rule": "scheduled_on_block + terminal_processing + terminal_access"
+    },
+    "terminal_access_min": {
+      "distribution": "triangular",
+      "minimum": 9,
+      "mode": 10,
+      "maximum": 12
+    },
+    "city_to_airport": {
+      "haul_classification": {
+        "source_field": "block_time_min",
+        "short_upper_inclusive_min": 180,
+        "medium_upper_inclusive_min": 360,
+        "long_rule": "block_time_min > medium_upper_inclusive_min"
+      },
+      "terminal_earliness_min": {
+        "distribution": "truncated_normal",
+        "sampling_method": "inverse_cdf_or_rejection",
+        "profiles": {
+          "short": {
+            "mean": 120,
+            "stddev": 30,
+            "minimum": 60,
+            "maximum": 180
+          },
+          "medium": {
+            "mean": 150,
+            "stddev": 35,
+            "minimum": 75,
+            "maximum": 225
+          },
+          "long": {
+            "mean": 180,
+            "stddev": 45,
+            "minimum": 90,
+            "maximum": 270
+          }
+        }
+      },
+      "journey_planning": {
+        "planning_passenger_count": "aircraft_capacity",
+        "planned_wait_source": "service.max_wait_to_boarding_min",
+        "boarding_duration_source": "ground_handling.boarding",
+        "disembarking_duration_source": "ground_handling.disembarking",
+        "flight_duration_source": "aircraft_phase_durations_and_route_cruise_distance",
+        "departure_preparation_source": "ground_handling.departure_finalization_min",
+        "planned_access_time": "use_same_sample_as_realized_terminal_access",
+        "desired_terminal_arrival_rule": "scheduled_off_block - terminal_earliness",
+        "request_time_rule": "desired_terminal_arrival - terminal_access - planned_disembarking - flight_duration - departure_finalization - planned_boarding - planned_wait",
+        "latest_desired_takeoff_rule": "desired_terminal_arrival - terminal_access - planned_disembarking - flight_duration"
+      },
+      "missed_airline_flight_classification_enabled": false
+    },
+    "parameter_precedence": "config_over_schedule_parameter_metadata",
+    "derived_schedule_passenger_fields": "ignore_and_recompute"
+  },
+  "service": {
+    "max_wait_to_boarding_min": 15,
+    "on_time_definition": "boarding_start - request_time <= max_wait_to_boarding_min",
+    "target_on_time_fraction": 0.95,
+    "target_statistic": "arithmetic_mean_of_replication_on_time_fractions",
+    "fleet_selection_requires_all_replications_completed": true,
+    "zero_demand_replications": "exclude_from_fraction_mean_and_report_count",
+    "all_zero_demand_result": "insufficient_demand_to_select_fleet"
+  },
+  "dispatch": {
+    "grouping_keys": [
+      "origin_vertiport",
+      "destination_vertiport"
+    ],
+    "within_queue_order": "request_time_then_passenger_id",
+    "group_capacity_source": "aircraft_spec.capacity.passenger_seats",
+    "boarding_trigger": "full_group_or_oldest_passenger_wait_reaches_limit",
+    "group_lock_event": "boarding_start",
+    "allow_partial_groups": true,
+    "deadline_override": {
+      "enabled": true,
+      "applies_to": "city_to_airport",
+      "trigger": "latest_desired_takeoff_of_group - boarding_duration - departure_finalization",
+      "behavior": "allow_early_partial_boarding_when_feasible"
+    },
+    "origin_priority_rank": {
+      "LYBE": 1,
+      "BW": 2,
+      "JUG": 3,
+      "DOR": 3,
+      "LYBV": 3,
+      "EXPO": 4
+    },
+    "competing_group_order": [
+      "origin_priority_rank_ascending",
+      "oldest_request_time_ascending",
+      "group_id_ascending"
+    ],
+    "aircraft_selection": "earliest_feasible_boarding_start",
+    "aircraft_tie_breakers": [
+      "repositioning_duration_ascending",
+      "aircraft_id_ascending"
+    ],
+    "preassignment_enabled": true,
+    "preassignment_depth_per_aircraft": 1,
+    "preassignment_recheck_on_state_change": true,
+    "future_passenger_request_visibility": false,
+    "repositioning": {
+      "enabled": true,
+      "reasons": [
+        "known_passenger_demand",
+        "parking_capacity_relief"
+      ],
+      "may_start_before_group_boarding_trigger": true,
+      "route_source": "vertiport_network.routes",
+      "check_energy_for_reposition_and_onward_passenger_service": true,
+      "may_charge_at_pickup_vertiport": true
+    }
+  },
+  "ground_handling": {
+    "boarding": {
+      "model": "linear_in_passenger_count",
+      "fixed_min": 2,
+      "per_passenger_min": 1.25,
+      "duration_for_zero_passengers_min": 0,
+      "includes_safety_briefing": true
+    },
+    "disembarking": {
+      "model": "linear_in_passenger_count",
+      "fixed_min": 1,
+      "per_passenger_min": 1.1,
+      "duration_for_zero_passengers_min": 0
+    },
+    "departure_finalization_min": 1,
+    "separate_taxi_time_enabled": false,
+    "on_stand_event": "landing_phase_end",
+    "cleaning": {
+      "enabled": true,
+      "every_completed_legs": 10,
+      "duration_min": 10,
+      "include_repositioning_legs": true,
+      "crews_per_vertiport": 1,
+      "starts_after": "disembarking_end",
+      "can_overlap_charging": true,
+      "can_overlap_boarding": false,
+      "reset_leg_counter_at": "cleaning_end"
+    }
+  },
+  "infrastructure_operations": {
+    "movement_resource": "shared_TLOF_FATO",
+    "takeoff_blocking_window": "entire_takeoff_phase",
+    "landing_blocking_window": "entire_landing_phase",
+    "narrow_occupancy_for_reporting_s": {
+      "takeoff": 15,
+      "landing": 20
+    },
+    "narrow_occupancy_placement": {
+      "takeoff": "first_seconds_of_takeoff_phase",
+      "landing": "last_seconds_of_landing_phase"
+    },
+    "add_blocking_durations_to_flight_time": false,
+    "destination_stand_reservation_required": true,
+    "destination_movement_slot_reservation_required": true,
+    "departure_allowed_only_if_arrival_resources_feasible": true,
+    "origin_stand_release_event": "takeoff_phase_start",
+    "destination_stand_occupancy_start": "landing_phase_end",
+    "resource_intervals": "half_open",
+    "airborne_holding_enabled": false
+  },
+  "energy": {
+    "mission_model_source": "aircraft_spec.flight_energy_model",
+    "cruise_distance_source": "vertiport_network.routes.cruise_distance_km",
+    "landing_reserve_kwh": 30,
+    "mission_contingency_fraction": 0.1,
+    "departure_requirement_rule": "planned_flight_energy * (1 + mission_contingency_fraction) + landing_reserve_kwh",
+    "actual_flight_energy_rule": "phase_based_planned_flight_energy",
+    "contingency_is_consumed_automatically": false,
+    "repositioning_uses_same_flight_power_model": true,
+    "payload_dependence_enabled": false,
+    "ground_energy_consumption_enabled": false
+  },
+  "charging": {
+    "enabled": true,
+    "model": "piecewise_linear_power_vs_soc",
+    "power_basis": "net_energy_stored_in_battery",
+    "curve": [
+      {
+        "soc": 0,
+        "power_kw": 270
+      },
+      {
+        "soc": 0.5,
+        "power_kw": 270
+      },
+      {
+        "soc": 0.8,
+        "power_kw": 50
+      },
+      {
+        "soc": 1,
+        "power_kw": 20
+      }
+    ],
+    "charger_power_source": "vertiport_network.vertiports.charging.power_per_charger_kw",
+    "charger_output_to_stored_energy_efficiency": 0.9,
+    "effective_power_rule": "min(interpolated_curve_power_kw, charger_power_kw * charger_output_to_stored_energy_efficiency)",
+    "apply_efficiency_again_to_curve": false,
+    "integration_method": "analytic_piecewise_integration_with_soc_boundaries",
+    "start_delay_after_on_stand_min": 1,
+    "interruption_lead_time_source": "ground_handling.departure_finalization_min",
+    "idle_target_soc": 1,
+    "stop_at_full_soc": true,
+    "interrupt_for_feasible_assigned_departure": true,
+    "can_overlap_boarding": true,
+    "can_overlap_disembarking": true,
+    "can_overlap_cleaning": true,
+    "can_overlap_departure_finalization": false,
+    "passenger_departure_readiness": "boarding_finished_and_required_energy_available_and_cleaning_finished",
+    "recharge_after_each_landing": true
+  },
+  "outputs": {
+    "save_config_snapshot": true,
+    "save_input_hashes": true,
+    "save_replication_seeds": true,
+    "replication_summary_csv": true,
+    "scenario_summary_csv": true,
+    "route_summary_csv": true,
+    "event_log_replications": [
+      0
+    ],
+    "event_log_format": "jsonl",
+    "metrics": [
+      "generated_passengers",
+      "completed_passenger_journeys",
+      "fraction_boarding_within_wait_limit",
+      "mean_wait_to_boarding_min",
+      "p95_wait_to_boarding_min",
+      "max_wait_to_boarding_min",
+      "mean_request_to_takeoff_min",
+      "terminal_target_lateness_min",
+      "passenger_flights",
+      "repositioning_flights",
+      "seat_load_factor_on_passenger_flights",
+      "flight_energy_kwh",
+      "battery_energy_added_kwh",
+      "minimum_soc",
+      "stand_utilization",
+      "charger_utilization",
+      "movement_resource_utilization",
+      "replication_completion_status"
+    ],
+    "confidence_level": 0.95,
+    "uncertainty_method": "student_t_interval_over_independent_replication_statistics",
+    "output_subdirectory_rule": "scenario_fleet_run_timestamp"
+  },
+  "validation": {
+    "require_matching_airport_date_and_timezone": true,
+    "require_unique_flight_ids": true,
+    "require_positive_integer_seat_capacities": true,
+    "require_valid_probability_parameters": true,
+    "require_city_shares_sum_to_one": true,
+    "require_supported_initial_fleet_allocation": true,
+    "require_allocation_within_stand_capacity": true,
+    "require_nonnegative_cruise_distances": true,
+    "require_required_mission_energy_within_battery_capacity": true,
+    "reject_duplicate_charging_model_in_aircraft_spec": true,
+    "missing_input_policy": "raise_error_without_silent_defaults"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "summary": {
+    "scenario": "low",
+    "fleet_size": 4,
+    "replication_index": 1,
+    "status": "completed",
+    "generated_passengers": 239,
+    "completed_passenger_journeys": 239,
+    "unfinished_passengers": 0,
+    "boarded_within_limit": 174,
+    "fraction_boarding_within_wait_limit": 0.7280334728033473,
+    "mean_wait_to_boarding_min": 15.720913079850243,
+    "p95_wait_to_boarding_min": 30.512694089206768,
+    "max_wait_to_boarding_min": 96.2279811717673,
+    "mean_request_to_takeoff_min": 22.139812687371215,
+    "mean_terminal_target_lateness_min": 4.779089930990009,
+    "passenger_flights": 148,
+    "repositioning_flights": 95,
+    "flight_energy_kwh": 8187.388009874983,
+    "battery_energy_added_kwh": 7982.013503661036,
+    "minimum_soc": 0.22583490844874793,
+    "cleanings_completed": 22,
+    "start_time_s": -8589.685791410968,
+    "end_time_s": 89041.63539248033,
+    "start_datetime": "2026-07-30T21:36:50.314209+02:00",
+    "end_datetime": "2026-08-01T00:44:01.635392+02:00",
+    "event_count": 4835,
+    "diagnostics_enabled": true,
+    "energy_balance_residual_kwh": 2.9388047551037744e-11,
+    "schema_version": 2,
+    "demand_fingerprint": "d636a3fa17f659c08b8032866b5a55dab8202538c2cbe44df8b0b1009bbd1ff8",
+    "wait_limit_min": 15,
+    "seat_load_factor_on_passenger_flights": 0.40371621621621623,
+    "repositioning_flight_fraction": 0.39094650205761317,
+    "repositioning_time_fraction": 0.36597221315774686,
+    "repositioning_energy_fraction": 0.3746436984648223,
+    "flight_energy_per_completed_passenger_kwh": 34.25685359780328,
+    "total_boarding_exceedance_passenger_min": 808.6739226916078,
+    "total_extra_after_boarding_passenger_min": 190.86700619751375,
+    "extra_after_boarding_min_mean": 0.7986067204916892,
+    "extra_after_boarding_min_p95": 4.892716132413625,
+    "extra_after_boarding_min_max": 6.163967928271692,
+    "journey_duration_min_mean": 36.533944677474096,
+    "journey_duration_min_p95": 54.4831703604475,
+    "journey_duration_min_max": 123.50815734171786,
+    "late_terminal_passengers": 26,
+    "terminal_passengers_observed": 112,
+    "unexplained_wait_passenger_min": 0,
+    "queue_peak": 10,
+    "queue_passenger_minutes": 3757.298226084206,
+    "network_queue_peak": 13
+  },
+  "numpy_version": "2.3.5",
+  "seed_components": {
+    "passenger_counts": [
+      20260920,
+      1,
+      1,
+      1
+    ],
+    "city_assignment": [
+      20260920,
+      1,
+      1,
+      2
+    ],
+    "arrival_terminal_processing": [
+      20260920,
+      1,
+      1,
+      3
+    ],
+    "terminal_access": [
+      20260920,
+      1,
+      1,
+      4
+    ],
+    "departure_terminal_earliness": [
+      20260920,
+      1,
+      1,
+      5
+    ]
+  },
+  "input_sha256": {
+    "config": "8381a2cf64c72c749f6dfed2dbf36e689623b8b20c42108645d9d367357b2ec8",
+    "aircraft_spec": "1d92a29ff955ec8194720f659c80edf216b314fc10254dcf237d7a6f523202b4",
+    "vertiport_network": "8f37a94965fd8b2b9be9143f587c88446d15875ef5cba00cefde590914bba9b3",
+    "flight_schedule": "5871c8897f25c6a4b84d5aaf40fda1a067670fa574cb675c9adf829ad9c940f9"
+  }
+}

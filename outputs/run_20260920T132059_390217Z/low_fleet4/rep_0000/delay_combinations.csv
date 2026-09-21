@@ -1,0 +1,25 @@
+﻿stage,scope,causes,label,exposed_passengers,late_passengers_exposed,late_passengers_blocked_after_limit,fraction_of_late_passengers_exposed,observed_passenger_minutes,overdue_passenger_minutes,extra_after_boarding_passenger_minutes
+after_boarding,committed_flight,battery_after_repositioning,Батерија после позиционог лета,39,14,0,0.28,115.40678260464477,0.0,115.40678260464477
+after_boarding,committed_flight,battery_at_origin,Батерија летелице на полазишту,3,3,0,0.06,7.290140041118622,0.0,7.290140041118622
+after_boarding,committed_flight,destination_tlof,Одредишни TLOF/FATO,3,2,0,0.04,3.5727148737498586,0.0,3.5727148737498586
+after_boarding,committed_flight,origin_tlof,Полазни TLOF/FATO,15,3,0,0.06,10.843830963654908,0.0,10.843830963654908
+before_boarding,candidate_set,destination_stand|group_formation|priority_other_group,Одредишна паркинг позиција + Правило формирања групе + Преддодела другој групи по редоследу диспечера,1,0,0,0.0,0.5522459305648226,0.0,0.0
+before_boarding,candidate_set,group_formation|priority_other_group,Правило формирања групе + Преддодела другој групи по редоследу диспечера,10,9,0,0.18,74.51743855112532,0.0,0.0
+before_boarding,candidate_set,priority_other_group,Преддодела другој групи по редоследу диспечера,2,2,2,0.04,42.51136595590506,42.51136595590506,0.0
+before_boarding,selected_plan,aircraft_busy,Летелица завршава претходни задатак,31,22,20,0.44,232.31991164103403,202.6107477906315,0.0
+before_boarding,selected_plan,aircraft_busy|group_formation,Летелица завршава претходни задатак + Правило формирања групе,113,42,0,0.84,787.908407965938,0.0,0.0
+before_boarding,selected_plan,battery_before_repositioning,Батерија пре позиционог лета,4,4,3,0.08,4.441518225739128,4.3062085283088285,0.0
+before_boarding,selected_plan,battery_before_repositioning|group_formation,Батерија пре позиционог лета + Правило формирања групе,21,7,0,0.14,43.653871802085234,0.0,0.0
+before_boarding,selected_plan,cleaning,Чишћење,21,16,16,0.32,101.28795376006676,67.48416529100423,0.0
+before_boarding,selected_plan,cleaning_crew|group_formation,Чекање екипе за чишћење + Правило формирања групе,2,2,0,0.04,4.004482096277934,0.0,0.0
+before_boarding,selected_plan,cleaning|group_formation,Чишћење + Правило формирања групе,25,15,0,0.3,155.5394689409322,0.0,0.0
+before_boarding,selected_plan,departure_preparation,Обавезна завршна припрема,14,11,8,0.22,13.616143330865452,7.808071665432726,0.0
+before_boarding,selected_plan,departure_preparation|group_formation,Обавезна завршна припрема + Правило формирања групе,111,17,0,0.34,108.23993542426747,0.0,0.0
+before_boarding,selected_plan,destination_tlof,Одредишни TLOF/FATO,5,5,3,0.1,5.82798532235253,3.371890719077358,0.0
+before_boarding,selected_plan,destination_tlof|group_formation,Одредишни TLOF/FATO + Правило формирања групе,3,1,0,0.02,3.120235434984594,0.0,0.0
+before_boarding,selected_plan,group_formation,Правило формирања групе,168,3,0,0.06,1185.9368664975937,0.0,0.0
+before_boarding,selected_plan,group_formation|origin_tlof,Правило формирања групе + Полазни TLOF/FATO,6,2,0,0.04,3.9078603886043615,0.0,0.0
+before_boarding,selected_plan,group_formation|repositioning_flight,Правило формирања групе + Долазак летелице позиционим летом,122,18,0,0.36,583.8485268995724,0.0,0.0
+before_boarding,selected_plan,origin_tlof,Полазни TLOF/FATO,2,2,1,0.04,1.9566184065161603,0.9783092032580801,0.0
+before_boarding,selected_plan,repositioning_flight,Долазак летелице позиционим летом,34,21,21,0.42,145.08911854455022,80.88746611816119,0.0
+departure_preparation,committed_flight,departure_preparation,Обавезна завршна припрема,237,50,0,1.0,237.0,0.0,0.0
